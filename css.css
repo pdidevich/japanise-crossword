@@ -1,0 +1,52 @@
+.cell {
+    float: left;
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+}
+
+    .cell_number-columns {
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+    }
+
+    .cell_number-rows {
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+    }
+
+    .cell_main-field {
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+    }
+
+        .cell_number-columns:nth-child(5n-4),
+        .cell_main-field:nth-child(5n-4) {
+            border-left: 2px solid black;
+        }
+
+.row {
+    overflow: hidden;
+}
+    .row:nth-child(5n-4) {
+        border-top: 1px solid black;
+    }
+
+.crossword {
+    display: table;
+}
+
+    .crossword__row {
+        display: table-row;
+    }
+
+    .crossword__cell {
+        display: table-cell;
+        border: 1px solid black;
+    }
