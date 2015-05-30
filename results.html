@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="css.css"/>
     <script src="jquery.min.js"></script>
     <script src="js.js"></script>
+    <script src="test.js"></script>
     <meta http-equiv=Content-Type content="text/html;charset=UTF-8"/>
     <title>Japanise Crosswords</title>
 </head>
@@ -33,10 +34,16 @@
         </div>
     </div>
 </div>
-<button class="JS-Save" value="Save">Save</button>
-<a href="results.html">Разгадать</a>
+<a href="index.html">Загрузить</a>
+<span class="JS-FillRows">Заполнить строки</span>
+<span class="JS-FillColumns">Заполнить колонки</span>
 <script>
-    $(function() {crossword.makeNumbers();  });
+    $(function() {
+        crossword.loadNumbers();
+        crossword.solvePage();
+        $('.JS-FillRows').click(crossword.solveRows);
+        $('.JS-FillColumns').click(crossword.solveColumns);
+    });
 </script>
 </body>
 </html>
