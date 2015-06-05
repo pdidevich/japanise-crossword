@@ -286,8 +286,41 @@ function save() {
     }
 
     //JSON.stringify(result);
+    $('.JS-Save-Json-Text').val(JSON.stringify(result));
     localStorage.setItem('crosswordNumbers', JSON.stringify(result));
     //return JSON.stringify(result);
 }
+
+function parseStringToArr(string) {
+    var line = string.split('//');
+    var resultArray = [];
+    for (var i = 0, l = line.length; i < l; i++) {
+        resultArray[i] = line[i].split('/');;
+    }
+    return resultArray;
+}
+
+function getResultFromStrings(xString, yString) {
+    return {
+        'x': parseStringToArr(xString),
+        'y': parseStringToArr(yString)
+    };
+}
+crossword.saveStringsToStorage = function(xString, yString) {
+    localStorage.setItem('crosswordNumbers', JSON.stringify(getResultFromStrings(xString, yString)));
+}
+
+$('.JS-Save-Json-Text').val(localStorage.getItem('crosswordNumbers'));
+$('.JS-Save-Json-Button').click(function() {
+    localStorage.setItem('crosswordNumbers', $('.JS-Save-Json-Text').val())
+});
+
+$('.JS-Save-FromString-Button').click(function() {
+    console.log($('.JS-Save-FromString-X').val(), $('.JS-Save-FromString-Y').val());
+    var result = getResultFromStrings($('.JS-Save-FromString-X').val(), $('.JS-Save-FromString-Y').val());
+    $('.JS-Save-Json-Text').val(JSON.stringify(result));
+    localStorage.setItem('crosswordNumbers', JSON.stringify(result));
+});
+
 
 });
